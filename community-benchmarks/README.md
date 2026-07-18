@@ -13,7 +13,7 @@ The 27B models come in two families: Bonsai (1-bit, `Q1_0`) and Ternary-Bonsai (
 | Bonsai (1-bit) | NVIDIA DGX Spark (GB10) | llama.cpp CUDA | 1,003 | 44.1 | no gain on this HW | [link](bonsai/cuda-gb10-27b-linux.md) |
 | Ternary | Apple M5 Pro 64 GB | MLX 2-bit | 466 | 29.5 | 34-49 (community dspark-mlx) | [link](ternary-bonsai/mlx-m5-pro-macos.md) |
 | Ternary | Apple M5 Pro 64 GB | llama.cpp Metal | 130 | 26.5 | | [link](ternary-bonsai/mlx-m5-pro-macos.md) |
-| Ternary | Apple M3 Pro 18 GB | llama.cpp Metal | 78.6 | 12.6 | | [link](ternary-bonsai/metal-m3-pro-macos.md) |
+| Ternary | Apple M3 Pro 18 GB | llama.cpp Metal | 78.6 | 12.6 | 2.3 (net-negative on this HW) | [link](ternary-bonsai/metal-m3-pro-macos.md) |
 
 ## 8B and smaller
 

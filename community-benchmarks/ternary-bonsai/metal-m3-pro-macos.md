@@ -59,6 +59,17 @@ $BENCH -m models/ternary-gguf/1.7B/Ternary-Bonsai-1.7B-Q2_0.gguf -ngl 99 -fa 1
 
 build: 62061f910 (9591)
 
+## DSpark speculative decoding (27B, llama-server)
+
+Measured via `BONSAI_SPECULATIVE=1 ./scripts/start_llama_server.sh -c 16384` vs a plain server at the same context, one request each of `"Implement quicksort in Python."` (`temperature 0`, `max_tokens 400`), reading the response `timings`:
+
+| Server | predicted_per_second | draft_n | draft_n_accepted |
+|--------|---------------------:|--------:|-----------------:|
+| plain | 13.4 | | |
+| DSpark drafter | 2.3 | 428 | 292 |
+
+**Net-negative on this hardware (~0.17x)** despite a healthy 68% draft acceptance — consistent with SPECULATIVE.md's note that the Metal path isn't optimized yet. Outputs of both runs were identical at temp 0, as documented.
+
 ## Configuration
 
 - Pre-built llama.cpp binaries downloaded by `./setup.sh` (`bin/mac`), default settings, `-ngl 99 -fa 1`.
